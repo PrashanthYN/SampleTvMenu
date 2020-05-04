@@ -47,7 +47,7 @@ class MainActivity : Activity(),MenuItemAdapter.ItemFocusListener{
 
     override fun onMenuItemFocus(x: Int, viewWidth: Int) {
         Log.d(TAG,"Screen location of focused view:{$x}, and width:{$viewWidth}")
-        val animation = ObjectAnimator.ofFloat(focusedIndicatorView, "translationX", x.toFloat()-25)
+        val animation = ObjectAnimator.ofFloat(focusedIndicatorView, "translationX", x.toFloat()-26)
         animation.duration=50
         animation.start()
         var layoutParams= LinearLayout.LayoutParams(viewWidth+10,focusedIndicatorView.measuredHeight)
