@@ -1,6 +1,7 @@
 package com.pyn.tvmenu
 
 import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.app.Activity
 import android.os.Bundle
 import android.util.Log
@@ -51,6 +52,16 @@ class MainActivity : Activity(),MenuItemAdapter.ItemFocusListener{
         animation.start()
         var layoutParams= LinearLayout.LayoutParams(viewWidth+10,focusedIndicatorView.measuredHeight)
         focusedIndicatorView.layoutParams=layoutParams
+
+        val widthAnimator = ValueAnimator.ofInt(focusedIndicatorView.measuredWidth, viewWidth+10)
+        widthAnimator.addUpdateListener { animation ->
+            val animatedValue = animation.animatedValue as Int
+            focusedIndicatorView.getLayoutParams().width = animatedValue
+            focusedIndicatorView.requestLayout()
+        }
+        widthAnimator.duration=50
+        widthAnimator.start()
+
 
     }
 
